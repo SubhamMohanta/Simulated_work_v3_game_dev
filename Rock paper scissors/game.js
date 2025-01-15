@@ -30,50 +30,37 @@ let youScoreBox = document.querySelector("#your-score")
 let compScoreBox = document.querySelector("#comp-score")
 let ops = document.querySelector("#logos")
 
-paperBtn.onclick = () => {
-    youImg.setAttribute("src","./assets/paper-hand.png")
-    computerRandomOpt()
-    if (operator == 2){
-        youScore++
-        youScoreBox.textContent = youScore
-    }
-    else if (operator == 3) {
-        compScore++;
-        compScoreBox.textContent = compScore;
-    }
-    gameEnd()
+function checkWinner(playerChoice, computerChoice) {
+    // 1: paper, 2: rock, 3: scissors
+    if (playerChoice === computerChoice) return 0; // draw
     
+    if (
+        (playerChoice === 1 && computerChoice === 2) || // paper beats rock
+        (playerChoice === 2 && computerChoice === 3) || // rock beats scissors
+        (playerChoice === 3 && computerChoice === 1)    // scissors beats paper
+    ) {
+        return 1; // player wins
+    }
+    return -1; // computer wins
 }
 
-rockBtn.onclick = () => {
-    youImg.setAttribute("src","./assets/rock-hand.png")
+function handlePlayerChoice(choice, imagePath) {
+    youImg.setAttribute("src", imagePath)
     computerRandomOpt()
-    if (operator == 2){
+    const result = checkWinner(choice, operator)
+    if (result === 1) {
         youScore++
         youScoreBox.textContent = youScore
-    }
-    else if (operator == 3) {
-        compScore++;
-        compScoreBox.textContent = compScore;
+    } else if (result === -1) {
+        compScore++
+        compScoreBox.textContent = compScore
     }
     gameEnd()
-    
 }
 
-scissorsBtn.onclick = () => {
-    youImg.setAttribute("src","./assets/scissors-hand.png")
-    computerRandomOpt()
-    if (operator == 2){
-        youScore++
-        youScoreBox.textContent = youScore
-    }
-    else if (operator == 3) {
-        compScore++;
-        compScoreBox.textContent = compScore;
-    }
-    gameEnd()
-    
-}
+paperBtn.onclick = () => handlePlayerChoice(1, "./assets/paper-hand.png")
+rockBtn.onclick = () => handlePlayerChoice(2, "./assets/rock-hand.png")
+scissorsBtn.onclick = () => handlePlayerChoice(3, "./assets/scissors-hand.png")
 
 let wonText = document.querySelector("#won")
 let body = document.querySelector("body")
