@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #d6d6d6;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+}
+
+#score-container {
+    font-size: 24px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    /* Default to 4 columns */
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #1e1e1e;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 8px;
+}
+
+
+#congrats-message {
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    margin-top: 20px;
+    display: none;
+}
+
+#congrats-message.visible {
+    display: block;
+}
+
+
+@media (max-width: 768px) {
+    .game-board {
+        grid-template-columns: repeat(4, 80px);
+        grid-gap: 8px;
+    }
+
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+
+    #score-container {
+        font-size: 20px;
+    }
+
+    #congrats-message {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-board {
+        grid-template-columns: repeat(3, 70px);
+        grid-gap: 6px;
+    }
+
+    .card {
+        width: 70px;
+        height: 70px;
+    }
+
+    #score-container {
+        font-size: 18px;
+    }
+
+    #congrats-message {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 320px) {
+    .game-board {
+        grid-template-columns: repeat(2, 60px);
+        grid-gap: 5px;
+    }
+
+    .card {
+        width: 60px;
+        height: 60px;
+    }
+
+    #score-container {
+        font-size: 16px;
+    }
+
+    #congrats-message {
+        font-size: 16px;
+    }
+}
