@@ -1,0 +1,57 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 120px));
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #555;
+    transition: background 0.1s ease-out;
+}
+
+.square:hover {
+    background-color: #e4e4e4;
+}
+
+.mole {
+    background: url('assets/mole.jpg') no-repeat center;
+    background-size: contain;
+}
+
+.flash-green {
+    background-color: rgba(0, 255, 0, 0.3) !important;
+}
+
+.flash-red {
+    background-color: rgba(255, 0, 0, 0.3) !important;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(60px, 90px));
+    }
+
+    .square {
+        width: 80px;
+        height: 80px;
+    }
+}
